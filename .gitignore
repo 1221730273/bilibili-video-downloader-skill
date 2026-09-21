@@ -1,0 +1,25 @@
+# 登录凭证 —— 绝对不能提交
+cookies/
+*.txt
+!requirements.txt
+bilibili_cookies.*
+**/bilibili_cookies.json
+
+# 下载产物
+downloads/
+*.mp4
+*.m4s
+*.flv
+*.blv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
