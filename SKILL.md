@@ -26,6 +26,8 @@ description: "B站（bilibili）视频下载工具，支持通过BV号/视频URL
 
 **优先自动获取，不要让用户手动去DevTools复制。**
 
+> **命令里的 `python` 需按平台替换**：Windows 用 `python`，macOS / Linux 用 `python3`（多数发行版不提供 `python` 命令）。
+
 #### 方案A：自动获取Cookie（首选）
 
 运行本Skill自带的Cookie获取脚本：
@@ -42,17 +44,22 @@ python scripts/get_cookies.py --output cookies/bilibili.txt
 
 用户只需要在弹出的浏览器里扫码登录即可，**不需要打开DevTools，不需要复制任何东西**。
 
-**Windows首次使用需安装依赖**（如果脚本报错）：
+首次使用需安装依赖（如果脚本报错）：
 ```bash
 pip install playwright
 playwright install chromium
+
+# 仅 Linux 需要，补齐 Chromium 的系统依赖（需 root）
+sudo playwright install-deps chromium
 ```
 
-Windows上如果chromium有问题，可以指定用系统Chrome或Edge：
+如果chromium有问题，可以指定用系统Chrome或Edge：
 ```bash
 python scripts/get_cookies.py --browser chrome    # 用Chrome
-python scripts/get_cookies.py --browser msedge    # 用Edge
+python scripts/get_cookies.py --browser msedge    # 用Edge（Windows / macOS）
 ```
+
+> **无桌面环境（纯命令行服务器）跑不了方案A**——脚本需要弹出可见的浏览器窗口供扫码。这类环境直接用方案C取一次Cookie。
 
 #### 方案B：如果已有Cookie文件
 

@@ -196,11 +196,13 @@ GET https://api.bilibili.com/x/player/playurl
 
 运行 `scripts/get_cookies.py`，自动打开浏览器，用户扫码登录后自动保存Cookie：
 
+> 命令里的 `python` 按平台替换：Windows 用 `python`，macOS / Linux 用 `python3`。
+
 ```bash
 # 基本用法
 python scripts/get_cookies.py --output bilibili_cookies.txt
 
-# Windows上如果chromium有问题，用系统Chrome或Edge
+# 如果chromium有问题，用系统Chrome或Edge
 python scripts/get_cookies.py --browser chrome
 python scripts/get_cookies.py --browser msedge
 ```
@@ -209,6 +211,9 @@ python scripts/get_cookies.py --browser msedge
 ```bash
 pip install playwright
 playwright install chromium
+
+# 仅 Linux 需要（需 root）
+sudo playwright install-deps chromium
 ```
 
 用户只需要在弹出的浏览器里扫码登录，脚本会自动检测登录成功并保存所有Cookie（包括HttpOnly的SESSDATA）。
